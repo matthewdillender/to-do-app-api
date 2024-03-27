@@ -1,6 +1,6 @@
 class TodoController < ApplicationController
   def index
-    @todo = Todo.all
+    @todos = Todo.all
     render :index
   end
 
