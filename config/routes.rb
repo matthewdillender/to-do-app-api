@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   "Hello!"
+
+  # your mom
+
 end
