@@ -1,18 +1,17 @@
 class ItemsController < ApplicationController
-
   def index
     @items = Item.all
     render :index
   end
 
   def show
-    @item = Item.find_by(id: params[:id]) 
+    @item = Item.find_by(id: params[:id])
     render :show
   end
 
   def create
     @item = Item.create(
-      name: params[:name]
+      item_name: params[:item_name],
     )
     render :show
   end
@@ -20,7 +19,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(id: params[:id])
     @item.update(
-      name: params[:name] || @item.name
+      name: params[:name] || @item.name,
     )
     render :show
   end
