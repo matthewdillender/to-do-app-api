@@ -13,5 +13,11 @@ Rails.application.routes.draw do
   get "/lists/:id" => "lists#show"
   post "/lists" => "lists#create"
   patch "/lists/:id" => "lists#update"
-  delete "/lists/:id" => "lists#delete"
+  delete "/lists/:id" => "lists#destroy"
+
+  get "/items" => "items#index"
+  get "/items/:id" => "items#show"
+  post "/items" => "items#create"
+  patch "/items/:id" => "items#update"
+  delete "/items/:id" => "items#destroy"
 end
