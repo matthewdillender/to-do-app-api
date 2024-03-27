@@ -1,3 +1,2 @@
-module UsersHelper
+class UsersController < ApplicationController
 end
-

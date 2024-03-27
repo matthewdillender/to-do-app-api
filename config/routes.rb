@@ -9,13 +9,18 @@ Rails.application.routes.draw do
   get "/reminders" => "reminders#index"
   # Defines the root path route ("/")
   # root "posts#index"
-  "Hello!"
+  get "/lists" => "lists#index"
+  get "/lists/:id" => "lists#show"
+  post "/lists" => "lists#create"
+  patch "/lists/:id" => "lists#update"
 
-  # your mom
+  delete "/lists/:id" => "lists#destroy"
 
-  # Jack
-
-  "ruby"
+  get "/items" => "items#index"
+  get "/items/:id" => "items#show"
+  post "/items" => "items#create"
+  patch "/items/:id" => "items#update"
+  delete "/items/:id" => "items#destroy"
+  delete "/lists/:id" => "lists#delete"
 
 end
-
