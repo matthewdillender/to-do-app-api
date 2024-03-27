@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/reminders" => "reminders#index"
   # Defines the root path route ("/")
   # root "posts#index"
+  "Hello!"
 
+  # your mom
 
 end
