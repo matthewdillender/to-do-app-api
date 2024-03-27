@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   # Jack
 
+  "ruby"
+
 end
 
