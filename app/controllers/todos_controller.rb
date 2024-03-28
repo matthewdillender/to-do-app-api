@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
 
     def index
-      @todos = Todo.all
+      @users = User.all
       render :index
     end
   
