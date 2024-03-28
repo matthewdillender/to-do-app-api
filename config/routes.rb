@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   patch "/categories/:id" => "categories#update"
   delete "/categories/:id" => "categories#destroy"
 
+  post "/sessions" => "sessions#create"
 end
