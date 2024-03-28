@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  belongs_to :todo
+  has_many :todos
   
 end
