@@ -11,7 +11,7 @@ class TodoController < ApplicationController
 
   def create
     @todo = Todo.create(
-      name: params[:name],
+      title: params[:title],
     )
     if @todo.valid?
       render json: { message: "todo created!" }
