@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.create(
-      category_name: params[:category_name],
+      name: params[:name],
     )
     render :show
   end
