@@ -29,9 +29,8 @@ class TodoController < ApplicationController
       title: params[:title] || @todo.title,
       completed: params[:completed] || @todo.completed,
       item_id: params[:item_id] || @todo.item_id,
-      category_id: params[:category_id] || @todo.category_id,
       description: params[:description] || @todo.description,
-      category_id: params[:category_id] || @todo.category_id,
+      deadline: params[:deadline] || @todo.deadline,
     )
     if @todo.valid?
       render :show
