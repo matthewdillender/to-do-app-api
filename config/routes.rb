@@ -9,11 +9,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get "/todo" => "todo#index"
-  get "/todo/:id" => "todo#show"
-  post "/todo" => "todo#create"
-  patch "/todo/:id" => "todo#update"
-  delete "/todo/:id" => "todo#destroy"
+  get "/todos" => "todos#index"
+  get "/todos/:id" => "todos#show"
+  post "/todos" => "todos#create"
+  patch "/todos/:id" => "todos#update"
+  delete "/todos/:id" => "todos#destroy"
 
   get "/categories" => "categories#index"
   get "/categories/:id" => "categories#show"
