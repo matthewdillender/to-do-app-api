@@ -23,10 +23,13 @@ class TodoController < ApplicationController
 
   def update
     @todo = Todo.find_by(id: params[:id])
-    @product.update(
-      name: params[:name] || @todo.name,
+    @todo.update(
+      title: params[:title] || @todo.title,
       completed: params[:completed] || @todo.completed,
       item_id: params[:item_id] || @todo.item_id,
+      category_id: params[:category_id] || @todo.category_id,
+      description: params[:description] || @todo.description,
+      category_id: params[:category_id] || @todo.category_id,
     )
     if @todo.valid?
       render :show
