@@ -29,7 +29,7 @@ class TodosController < ApplicationController
       @todo.update(
         title: params[:title] || @todo.title,
         completed: params[:completed] || @todo.completed,
-        item_id: params[:item_id] || @todo.item_id,
+        category_id: params[:category_id] || @todo.category_id,
         description: params[:description] || @todo.description,
         deadline: params[:deadline] || @todo.deadline,
       )

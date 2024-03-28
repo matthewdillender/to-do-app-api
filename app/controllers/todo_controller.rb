@@ -1,4 +1,5 @@
 class TodoController < ApplicationController
+
   def index
     @todos = Todo.all
     render :index
