@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, only: [:create, :update, :destroy]
 
   def index
     @todos = Todo.includes(:category).all
