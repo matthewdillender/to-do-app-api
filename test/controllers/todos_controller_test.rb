@@ -1,15 +1,21 @@
 require "test_helper"
 
 class TodosControllerTest < ActionDispatch::IntegrationTest
+  # user_jwt = generate_user_jwt(user_id: todo.user_id)
   test "create" do
     assert_difference "Todo.count", 1 do
-      post "/todos", params: { name: "todo", completed: false, user_id: 1, category_id: 1, description: "test description", deadline: 1999-12-02}
+      post "/users", params: { name: "Test", email: "test@test.com", password: "password", password_confirmation: "password"}
+      post "/sessions", params: {email: "test@test.com", password: "password"}
+      data = JSON.parse(response.body)
+      jwt = data["jwt"]
+
+      post "/todos", params: { name: "todo", completed: false, user_id: 1, category_id: 1, description: "test description", deadline: 1999-12-02}, headers: { "Authorization" => "Bearer #{jwt}"}
       assert_response 200
     end
   end
 
   test "index" do
-    get "/todos.json"
+    get "/todos.json", headers: { "Authorization" => "Bearer #{user_jwt}"}
     assert_response 200
 
     data = JSON.parse(response.body)
@@ -17,7 +23,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show" do
-    get "/todos/#{Todo.first.id}.json"
+    get "/todos/#{Todo.first.id}.json", headers: { "Authorization" => "Bearer #{user_jwt}"}
     assert_response 200
 
     data = JSON.parse(response.body)
@@ -26,7 +32,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
 
   test "update" do
     todo = Todo.first
-    patch "/todos/#{todo.id}.json", params: { title: "Updated title" }
+    patch "/todos/#{todo.id}.json", params: { title: "Updated title" }, headers: { "Authorization" => "Bearer #{user_jwt}"}
     assert_response 200
 
     data = JSON.parse(response.body)
@@ -35,8 +41,8 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
 
   test "destroy" do
     assert_difference "Todo.count", -1 do
-      delete "/todos/#{Todo.first.id}.json"
-      assert_response 204 #204 doesnt require a response/content-shown back. confirm w group
+      delete "/todos/#{Todo.first.id}.json", headers: { "Authorization" => "Bearer #{user_jwt}"}
+      assert_response 204
     end
   end
 end
