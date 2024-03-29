@@ -21,7 +21,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
 
     data = JSON.parse(response.body)
-    assert_equal ["id", "title", "completed", "user_id", "category_id", "description", "deadline"], data.keys
+    assert_equal ["id", "title", "user_id", "description", "deadline", "completed", "category_id", "created_at", "updated_at"], data.keys
   end
 
   test "update" do
@@ -36,7 +36,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
   test "destroy" do
     assert_difference "Todo.count", -1 do
       delete "/todos/#{Todo.first.id}.json"
-      assert_response 200
+      assert_response 204 #204 doesnt require a response/content-shown back. confirm w group
     end
   end
 end
