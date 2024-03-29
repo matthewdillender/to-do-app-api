@@ -1,9 +1,10 @@
 class TodosController < ApplicationController
+  before_action :authenticate_user, only: [:create, :update, :destroy]
 
-    def index
-      @todos = Todo.all
-      render :index
-    end
+  def index
+    @todos = Todo.includes(:category).all
+    render json: @todos.as_json(include: { category: { only: [:id, :name] } })
+  end
   
     def show
       @todo = Todo.find_by(id: params[:id])
@@ -14,7 +15,9 @@ class TodosController < ApplicationController
       @todo = Todo.create(
         title: params[:title],
         description: params[:description],
-        deadline: params[:deadline]
+        deadline: params[:deadline],
+        user_id: current_user.id,
+        category_id: params[:category_id]
       )
       if @todo.valid?
         render json: { message: "todo created!" }
