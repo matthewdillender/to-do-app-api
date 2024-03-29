@@ -3,7 +3,7 @@ require "test_helper"
 class TodosControllerTest < ActionDispatch::IntegrationTest
   test "create" do
     assert_difference "Todo.count", 1 do
-      post "/todos.json", params: { name: "todo", completed: false, user_id: 1, category_id: 1, description: "test description", deadline: 1999-12-02}
+      post "/todos", params: { name: "todo", completed: false, user_id: 1, category_id: 1, description: "test description", deadline: 1999-12-02}
       assert_response 200
     end
   end

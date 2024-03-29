@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  before_action :authenticate_user
 
     def index
       @todos = Todo.all
@@ -14,7 +15,9 @@ class TodosController < ApplicationController
       @todo = Todo.create(
         title: params[:title],
         description: params[:description],
-        deadline: params[:deadline]
+        deadline: params[:deadline],
+        user_id: current_user.id,
+        category_id: params[:category_id]
       )
       if @todo.valid?
         render json: { message: "todo created!" }
